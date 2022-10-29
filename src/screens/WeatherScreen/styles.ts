@@ -40,7 +40,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   city: {
     color: COLORS.WHITE,
-    // fontFamily: 'Lato', //add fond
+    fontFamily: 'Lato-Regular',
     fontSize: 30,
     fontWeight: '400',
     lineHeight: 36,
@@ -66,14 +66,14 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     paddingTop: '1.3%',
     color: COLORS.WHITE,
     opacity: 0.4,
-    // fontFamily: 'Lato', //add fond
+    fontFamily: 'Lato-Regular',
     fontSize: 18,
     fontWeight: '400',
     lineHeight: 21.6,
   },
   degreeActive: {
     color: COLORS.WHITE,
-    // fontFamily: 'Lato', //add fond
+    fontFamily: 'Lato-Regular',
     fontSize: 18,
     fontWeight: '700',
     lineHeight: 21.6,
@@ -86,7 +86,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   degreeInactive: {
     color: COLORS.WHITE,
-    // fontFamily: 'Lato', //add fond
+    fontFamily: 'Lato-Regular',
     fontSize: 18,
     fontWeight: '700',
     lineHeight: 21.6,
@@ -101,7 +101,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   title: {
     color: COLORS.WHITE,
     opacity: 0.4,
-    // fontFamily: 'Lato', //add fond
+    fontFamily: 'Lato-Regular',
     fontSize: 18,
     fontWeight: '400',
     lineHeight: 21.6,
@@ -118,7 +118,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   currentDegrees: {
     color: COLORS.WHITE,
-    // fontFamily: 'PT Sans', //add fond
+    fontFamily: 'PTSans-Regular',
     fontSize: 120,
     fontWeight: '400',
     lineHeight: 155,
@@ -127,7 +127,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   currentWeather: {
     color: COLORS.WHITE,
-    // fontFamily: 'Lato', //add fond
+    fontFamily: 'Lato-Regular',
     fontSize: 18,
     fontWeight: '400',
     lineHeight: 21.6,
