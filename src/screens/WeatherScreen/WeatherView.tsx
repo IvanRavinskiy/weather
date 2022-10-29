@@ -2,53 +2,49 @@ import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {weatherScreenStyles} from './styles';
+import {WeatherPropertyCard} from '../../components/WeatherPropertyCard';
 
 export const WeatherView = () => {
   return (
     <SafeAreaView style={weatherScreenStyles.rootContainer}>
       <View>
-        <Text>Omsk</Text>
-        <View>
+        <View style={weatherScreenStyles.topHeaderContainer}>
+          <Text style={weatherScreenStyles.city}>Omsk</Text>
+          <View style={weatherScreenStyles.mainDegreeContainer}>
+            <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
+            <View style={weatherScreenStyles.switchDegreeContainer}>
+              <TouchableOpacity style={weatherScreenStyles.degreeContainer}>
+                <Text style={weatherScreenStyles.degree}>F</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={weatherScreenStyles.degreeContainer}>
+                <Text style={weatherScreenStyles.degree}>C</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <View style={weatherScreenStyles.bottomHeaderContainer}>
           <TouchableOpacity>
-            <Text>F</Text>
+            <Text style={weatherScreenStyles.title}>Change city</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text>C</Text>
+            <Text style={weatherScreenStyles.title}>My position</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View>
         <View>
-          <Text>Change city</Text>
+          <Text style={weatherScreenStyles.currentDegrees}>14º</Text>
         </View>
-        <View>
-          <Text>My position</Text>
-        </View>
+        <Text style={weatherScreenStyles.currentWeather}>Rain</Text>
       </View>
       <View>
-        <Text>14</Text>
-        <Text>Rain</Text>
-      </View>
-      <View>
-        <View>
-          <View>
-            <Text>Wind</Text>
-            <Text>5m/s west</Text>
-          </View>
-          <View>
-            <Text>Pressure</Text>
-            <Text>754 mm</Text>
-          </View>
+        <View style={weatherScreenStyles.bottomContainerRow}>
+          <WeatherPropertyCard property={'Wind'} index={'5m/s west'} />
+          <WeatherPropertyCard property={'Pressure'} index={'754 mm'} />
         </View>
-        <View>
-          <View>
-            <Text>Humidity</Text>
-            <Text>60%</Text>
-          </View>
-          <View>
-            <Text>~Chance of rain</Text>
-            <Text>10%</Text>
-          </View>
+        <View style={weatherScreenStyles.bottomContainerRow}>
+          <WeatherPropertyCard property={'Humidity'} index={'60%'} />
+          <WeatherPropertyCard property={'Chance of rain'} index={'10%'} />
         </View>
       </View>
     </SafeAreaView>
