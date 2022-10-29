@@ -8,7 +8,8 @@ import Cloud from '../../../assets/cloud.svg';
 import {WeatherViewProps} from './types';
 
 export const WeatherView: FC<WeatherViewProps> = props => {
-  const {activeDegreeStyles} = props;
+  const {activeDegreeStyles, selectFahrenheitOnPress, selectCelsiusOnPress} =
+    props;
 
   return (
     <SafeAreaView style={weatherScreenStyles.rootContainer}>
@@ -19,6 +20,7 @@ export const WeatherView: FC<WeatherViewProps> = props => {
             <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
             <View style={weatherScreenStyles.switchDegreeContainer}>
               <TouchableOpacity
+                onPress={selectCelsiusOnPress}
                 style={[
                   weatherScreenStyles.degreeContainer,
                   activeDegreeStyles,
@@ -26,6 +28,7 @@ export const WeatherView: FC<WeatherViewProps> = props => {
                 <Text style={weatherScreenStyles.degree}>C</Text>
               </TouchableOpacity>
               <TouchableOpacity
+                onPress={selectFahrenheitOnPress}
                 style={[
                   weatherScreenStyles.degreeContainer,
                   activeDegreeStyles,
