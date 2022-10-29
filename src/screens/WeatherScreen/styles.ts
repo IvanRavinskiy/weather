@@ -7,11 +7,14 @@ type WeatherScreenStyles = {
   mainDegreeContainer: ViewStyle;
   city: TextStyle;
   switchDegreeContainer: ViewStyle;
+  positionContainer: ViewStyle;
+  positionIcon: ViewStyle;
   degreeSymbol: TextStyle;
   degree: TextStyle;
   degreeContainer: ViewStyle;
   title: TextStyle;
   bottomHeaderContainer: ViewStyle;
+  currentWeatherContainer: ViewStyle;
   currentDegrees: TextStyle;
   currentWeather: TextStyle;
   bottomContainerRow: ViewStyle;
@@ -51,6 +54,12 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     borderWidth: 1,
     borderColor: COLORS.SPANISH_GRAY,
   },
+  positionContainer: {
+    flexDirection: 'row',
+  },
+  positionIcon: {
+    left: -10,
+  },
   degreeSymbol: {
     paddingTop: '1.3%',
     color: COLORS.WHITE,
@@ -85,6 +94,11 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     justifyContent: 'space-between',
     marginVertical: 19,
   },
+  currentWeatherContainer: {
+    flexDirection: 'row',
+    marginHorizontal: '5%',
+    alignItems: 'center',
+  },
   currentDegrees: {
     color: COLORS.WHITE,
     // fontFamily: 'PT Sans', //add fond
@@ -92,6 +106,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     fontWeight: '400',
     lineHeight: 155,
     textAlign: 'center',
+    paddingStart: 15,
   },
   currentWeather: {
     color: COLORS.WHITE,

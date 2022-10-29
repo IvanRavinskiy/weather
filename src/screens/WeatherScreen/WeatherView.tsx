@@ -3,6 +3,8 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {weatherScreenStyles} from './styles';
 import {WeatherPropertyCard} from '../../components/WeatherPropertyCard';
+import Pointer from '../../../assets/pointer.svg';
+import Cloud from '../../../assets/cloud.svg';
 
 export const WeatherView = () => {
   return (
@@ -26,13 +28,15 @@ export const WeatherView = () => {
           <TouchableOpacity>
             <Text style={weatherScreenStyles.title}>Change city</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity style={weatherScreenStyles.positionContainer}>
+            <Pointer style={weatherScreenStyles.positionIcon} />
             <Text style={weatherScreenStyles.title}>My position</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View>
-        <View>
+        <View style={weatherScreenStyles.currentWeatherContainer}>
+          <Cloud height={120} width={120} />
           <Text style={weatherScreenStyles.currentDegrees}>14º</Text>
         </View>
         <Text style={weatherScreenStyles.currentWeather}>Rain</Text>
