@@ -3,6 +3,7 @@ import {COLORS, FONT_FAMILIES, FONT_WEIGHTS} from '../../constants';
 
 type WeatherScreenStyles = {
   rootContainer: ViewStyle;
+  modalContainer: ViewStyle;
   topHeaderContainer: ViewStyle;
   mainDegreeContainer: ViewStyle;
   city: TextStyle;
@@ -27,6 +28,15 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     paddingHorizontal: '5%',
     paddingTop: '10%',
     paddingBottom: '5%',
+    justifyContent: 'space-between',
+  },
+  modalContainer: {
+    marginTop: '15%',
+    marginHorizontal: '5%',
+    backgroundColor: COLORS.WHITE,
+    borderRadius: 4,
+    padding: '3%',
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
   topHeaderContainer: {

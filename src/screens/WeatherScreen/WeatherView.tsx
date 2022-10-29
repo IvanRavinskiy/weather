@@ -1,5 +1,12 @@
 import React, {FC} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {
+  Button,
+  Modal,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {weatherScreenStyles} from './styles';
 import {WeatherPropertyCard} from '../../components/WeatherPropertyCard';
@@ -8,12 +15,24 @@ import Cloud from '../../../assets/cloud.svg';
 import {WeatherViewProps} from './types';
 
 export const WeatherView: FC<WeatherViewProps> = props => {
-  const {activeDegreeStyles, selectFahrenheitOnPress, selectCelsiusOnPress} =
-    props;
+  const {
+    activeDegreeStyles,
+    selectFahrenheitOnPress,
+    selectCelsiusOnPress,
+    modalVisible,
+    changeCityOnPress,
+    selectCityOnPress,
+  } = props;
 
   return (
     <SafeAreaView style={weatherScreenStyles.rootContainer}>
       <View>
+        <Modal animationType={'fade'} transparent={true} visible={modalVisible}>
+          <View style={weatherScreenStyles.modalContainer}>
+            <TextInput autoFocus={true} />
+            <Button onPress={selectCityOnPress} title={'OK'} />
+          </View>
+        </Modal>
         <View style={weatherScreenStyles.topHeaderContainer}>
           <Text style={weatherScreenStyles.city}>Omsk</Text>
           <View style={weatherScreenStyles.mainDegreeContainer}>
@@ -39,7 +58,7 @@ export const WeatherView: FC<WeatherViewProps> = props => {
           </View>
         </View>
         <View style={weatherScreenStyles.bottomHeaderContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={changeCityOnPress}>
             <Text style={weatherScreenStyles.title}>Change city</Text>
           </TouchableOpacity>
           <TouchableOpacity style={weatherScreenStyles.positionContainer}>
