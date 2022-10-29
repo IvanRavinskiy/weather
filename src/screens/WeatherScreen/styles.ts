@@ -1,5 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {COLORS} from '../../constants';
+import {COLORS, FONT_FAMILIES, FONT_WEIGHTS} from '../../constants';
 
 type WeatherScreenStyles = {
   rootContainer: ViewStyle;
@@ -40,9 +40,9 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   city: {
     color: COLORS.WHITE,
-    fontFamily: 'Lato-Regular',
+    fontFamily: FONT_FAMILIES.LATO_REGULAR,
     fontSize: 30,
-    fontWeight: '400',
+    fontWeight: FONT_WEIGHTS.NORMAL,
     lineHeight: 36,
   },
   switchDegreeContainer: {
@@ -66,16 +66,16 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     paddingTop: '1.3%',
     color: COLORS.WHITE,
     opacity: 0.4,
-    fontFamily: 'Lato-Regular',
+    fontFamily: FONT_FAMILIES.LATO_REGULAR,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: FONT_WEIGHTS.NORMAL,
     lineHeight: 21.6,
   },
   degreeActive: {
     color: COLORS.WHITE,
-    fontFamily: 'Lato-Regular',
+    fontFamily: FONT_FAMILIES.LATO_REGULAR,
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: FONT_WEIGHTS.BOLD,
     lineHeight: 21.6,
   },
   degreeActiveContainer: {
@@ -86,9 +86,9 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   degreeInactive: {
     color: COLORS.WHITE,
-    fontFamily: 'Lato-Regular',
+    fontFamily: FONT_FAMILIES.LATO_REGULAR,
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: FONT_WEIGHTS.BOLD,
     lineHeight: 21.6,
   },
   degreeInactiveContainer: {
@@ -101,9 +101,9 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   title: {
     color: COLORS.WHITE,
     opacity: 0.4,
-    fontFamily: 'Lato-Regular',
+    fontFamily: FONT_FAMILIES.LATO_REGULAR,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: FONT_WEIGHTS.NORMAL,
     lineHeight: 21.6,
   },
   bottomHeaderContainer: {
@@ -120,16 +120,16 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     color: COLORS.WHITE,
     fontFamily: 'PTSans-Regular',
     fontSize: 120,
-    fontWeight: '400',
+    fontWeight: FONT_WEIGHTS.NORMAL,
     lineHeight: 155,
     textAlign: 'center',
     paddingStart: 15,
   },
   currentWeather: {
     color: COLORS.WHITE,
-    fontFamily: 'Lato-Regular',
+    fontFamily: FONT_FAMILIES.LATO_REGULAR,
     fontSize: 18,
-    fontWeight: '400',
+    fontWeight: FONT_WEIGHTS.NORMAL,
     lineHeight: 21.6,
     textAlign: 'center',
   },
