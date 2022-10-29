@@ -15,11 +15,13 @@ export const WeatherView = () => {
           <View style={weatherScreenStyles.mainDegreeContainer}>
             <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
             <View style={weatherScreenStyles.switchDegreeContainer}>
-              <TouchableOpacity style={weatherScreenStyles.degreeContainer}>
-                <Text style={weatherScreenStyles.degree}>F</Text>
+              <TouchableOpacity
+                style={weatherScreenStyles.degreeActiveContainer}>
+                <Text style={weatherScreenStyles.degreeActive}>C</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={weatherScreenStyles.degreeContainer}>
-                <Text style={weatherScreenStyles.degree}>C</Text>
+              <TouchableOpacity
+                style={weatherScreenStyles.degreeInactiveContainer}>
+                <Text style={weatherScreenStyles.degreeInactive}>F</Text>
               </TouchableOpacity>
             </View>
           </View>

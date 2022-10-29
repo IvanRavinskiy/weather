@@ -10,8 +10,10 @@ type WeatherScreenStyles = {
   positionContainer: ViewStyle;
   positionIcon: ViewStyle;
   degreeSymbol: TextStyle;
-  degree: TextStyle;
-  degreeContainer: ViewStyle;
+  degreeActive: TextStyle;
+  degreeActiveContainer: ViewStyle;
+  degreeInactive: TextStyle;
+  degreeInactiveContainer: ViewStyle;
   title: TextStyle;
   bottomHeaderContainer: ViewStyle;
   currentWeatherContainer: ViewStyle;
@@ -69,14 +71,29 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
     fontWeight: '400',
     lineHeight: 21.6,
   },
-  degree: {
+  degreeActive: {
     color: COLORS.WHITE,
     // fontFamily: 'Lato', //add fond
     fontSize: 18,
     fontWeight: '700',
     lineHeight: 21.6,
   },
-  degreeContainer: {
+  degreeActiveContainer: {
+    backgroundColor: COLORS.WHITE_WITH_OPACITY,
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  degreeInactive: {
+    color: COLORS.WHITE,
+    // fontFamily: 'Lato', //add fond
+    fontSize: 18,
+    fontWeight: '700',
+    lineHeight: 21.6,
+  },
+  degreeInactiveContainer: {
+    backgroundColor: COLORS.CERULEAN_FROST,
+    opacity: 0.2,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'center',
