@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {weatherScreenStyles} from './styles';
 import {WeatherPropertyCard} from '../../components/WeatherPropertyCard';
 import Pointer from '../../../assets/pointer.svg';
 import Cloud from '../../../assets/cloud.svg';
+import {WeatherViewProps} from './types';
 
-export const WeatherView = () => {
+export const WeatherView: FC<WeatherViewProps> = props => {
+  const {activeDegreeStyles} = props;
+
   return (
     <SafeAreaView style={weatherScreenStyles.rootContainer}>
       <View>
@@ -16,12 +19,18 @@ export const WeatherView = () => {
             <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
             <View style={weatherScreenStyles.switchDegreeContainer}>
               <TouchableOpacity
-                style={weatherScreenStyles.degreeActiveContainer}>
-                <Text style={weatherScreenStyles.degreeActive}>C</Text>
+                style={[
+                  weatherScreenStyles.degreeContainer,
+                  activeDegreeStyles,
+                ]}>
+                <Text style={weatherScreenStyles.degree}>C</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={weatherScreenStyles.degreeInactiveContainer}>
-                <Text style={weatherScreenStyles.degreeInactive}>F</Text>
+                style={[
+                  weatherScreenStyles.degreeContainer,
+                  activeDegreeStyles,
+                ]}>
+                <Text style={weatherScreenStyles.degree}>F</Text>
               </TouchableOpacity>
             </View>
           </View>

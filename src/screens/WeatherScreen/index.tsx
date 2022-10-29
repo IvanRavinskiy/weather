@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {WeatherView} from './WeatherView';
+import {activeStyles} from '../../constants';
 
 export const WeatherScreen = () => {
-  return <WeatherView />;
+  const [isActiveDegree] = useState(false);
+
+  const activeDegreeStyles = isActiveDegree && activeStyles;
+
+  return <WeatherView activeDegreeStyles={activeDegreeStyles} />;
 };
