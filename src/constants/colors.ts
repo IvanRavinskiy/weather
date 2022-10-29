@@ -1,0 +1,5 @@
+export enum COLORS {
+  CERULEAN_FROST = '#7290B9',
+  SPANISH_GRAY = '#979797',
+  WHITE = '#FFFFFF',
+}
