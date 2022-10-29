@@ -102,7 +102,7 @@ export const weatherScreenStyles = StyleSheet.create<WeatherScreenStyles>({
   },
   currentDegrees: {
     color: COLORS.WHITE,
-    fontFamily: 'PTSans-Regular',
+    fontFamily: FONT_FAMILIES.PTSANS_REGULAR,
     fontSize: 120,
     fontWeight: FONT_WEIGHTS.NORMAL,
     lineHeight: 155,
