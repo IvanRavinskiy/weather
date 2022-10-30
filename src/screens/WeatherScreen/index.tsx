@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {WeatherView} from './WeatherView';
-import {activeStyles} from '../../constants';
-import {useAppDispatch} from '../../state';
+import {activeStyles, DEFAULT_CITY} from '../../constants';
+import {useAppDispatch, useAppSelector} from '../../state';
 import {GET_WEATHER} from '../../state/reducers/weather';
+import {getWeather} from '../../state/selectors/weather';
 
 export const WeatherScreen = () => {
   const [isActiveDegree, setIsActiveDegree] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const dispatch = useAppDispatch();
+
+  const weather = useAppSelector(getWeather);
+  const city = weather?.name;
+  const temp = Math.round(weather?.main.temp);
+  const wind = Math.round(weather?.wind.speed);
+  const pressure = Math.round(weather?.main.pressure);
+  const humidity = weather?.main.humidity;
+  const description = weather?.weather[0].description;
 
   const activeDegreeStyles = isActiveDegree && activeStyles;
 
@@ -27,13 +36,21 @@ export const WeatherScreen = () => {
     setModalVisible(false);
   };
 
-  const getWeather = () => {
-    dispatch(GET_WEATHER('Minsk'));
-  };
+  const getWeatherOnPress = () => {};
+
+  useEffect(() => {
+    dispatch(GET_WEATHER(DEFAULT_CITY));
+  }, []);
 
   return (
     <WeatherView
-      getMyPositionOnPress={getWeather}
+      city={city}
+      temp={temp}
+      wind={wind}
+      pressure={pressure}
+      humidity={humidity}
+      description={description}
+      getMyPositionOnPress={getWeatherOnPress}
       modalVisible={modalVisible}
       changeCityOnPress={changeCityOnPress}
       selectCityOnPress={selectCityOnPress}

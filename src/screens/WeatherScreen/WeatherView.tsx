@@ -16,6 +16,12 @@ import {WeatherViewProps} from './types';
 
 export const WeatherView: FC<WeatherViewProps> = props => {
   const {
+    city = '',
+    temp = 0,
+    wind = 0,
+    pressure = 0,
+    humidity = 0,
+    description = '',
     activeDegreeStyles,
     selectFahrenheitOnPress,
     selectCelsiusOnPress,
@@ -35,7 +41,7 @@ export const WeatherView: FC<WeatherViewProps> = props => {
           </View>
         </Modal>
         <View style={weatherScreenStyles.topHeaderContainer}>
-          <Text style={weatherScreenStyles.city}>Omsk</Text>
+          <Text style={weatherScreenStyles.city}>{city}</Text>
           <View style={weatherScreenStyles.mainDegreeContainer}>
             <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
             <View style={weatherScreenStyles.switchDegreeContainer}>
@@ -73,17 +79,17 @@ export const WeatherView: FC<WeatherViewProps> = props => {
       <View>
         <View style={weatherScreenStyles.currentWeatherContainer}>
           <Cloud height={120} width={120} />
-          <Text style={weatherScreenStyles.currentDegrees}>14º</Text>
+          <Text style={weatherScreenStyles.currentDegrees}>{temp}º</Text>
         </View>
-        <Text style={weatherScreenStyles.currentWeather}>Rain</Text>
+        <Text style={weatherScreenStyles.currentWeather}>{description}</Text>
       </View>
       <View>
         <View style={weatherScreenStyles.bottomContainerRow}>
-          <WeatherPropertyCard property={'Wind'} index={'5m/s west'} />
-          <WeatherPropertyCard property={'Pressure'} index={'754 mm'} />
+          <WeatherPropertyCard property={'Wind'} index={`${wind} m/s west`} />
+          <WeatherPropertyCard property={'Pressure'} index={`${pressure} mm`} />
         </View>
         <View style={weatherScreenStyles.bottomContainerRow}>
-          <WeatherPropertyCard property={'Humidity'} index={'60%'} />
+          <WeatherPropertyCard property={'Humidity'} index={`${humidity}%`} />
           <WeatherPropertyCard property={'Chance of rain'} index={'10%'} />
         </View>
       </View>
