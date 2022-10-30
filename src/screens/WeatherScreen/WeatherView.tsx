@@ -22,6 +22,8 @@ export const WeatherView: FC<WeatherViewProps> = props => {
     pressure = 0,
     humidity = 0,
     description = '',
+    inputCity,
+    cityInputOnChange,
     activeDegreeStyles,
     selectFahrenheitOnPress,
     selectCelsiusOnPress,
@@ -36,7 +38,11 @@ export const WeatherView: FC<WeatherViewProps> = props => {
       <View>
         <Modal animationType={'fade'} transparent={true} visible={modalVisible}>
           <View style={weatherScreenStyles.modalContainer}>
-            <TextInput autoFocus={true} />
+            <TextInput
+              value={inputCity}
+              onChangeText={cityInputOnChange}
+              autoFocus={true}
+            />
             <Button onPress={selectCityOnPress} title={'OK'} />
           </View>
         </Modal>
@@ -85,8 +91,11 @@ export const WeatherView: FC<WeatherViewProps> = props => {
       </View>
       <View>
         <View style={weatherScreenStyles.bottomContainerRow}>
-          <WeatherPropertyCard property={'Wind'} index={`${wind} m/s west`} />
-          <WeatherPropertyCard property={'Pressure'} index={`${pressure} mm`} />
+          <WeatherPropertyCard property={'Wind'} index={`${wind} m/s, west`} />
+          <WeatherPropertyCard
+            property={'Pressure'}
+            index={`${pressure} hPa`}
+          />
         </View>
         <View style={weatherScreenStyles.bottomContainerRow}>
           <WeatherPropertyCard property={'Humidity'} index={`${humidity}%`} />

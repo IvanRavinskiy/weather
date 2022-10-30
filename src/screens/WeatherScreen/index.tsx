@@ -8,6 +8,7 @@ import {getWeather} from '../../state/selectors/weather';
 export const WeatherScreen = () => {
   const [isActiveDegree, setIsActiveDegree] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [inputCity, setInputCity] = useState('');
 
   const dispatch = useAppDispatch();
 
@@ -34,6 +35,12 @@ export const WeatherScreen = () => {
   };
   const selectCityOnPress = () => {
     setModalVisible(false);
+    dispatch(GET_WEATHER(inputCity));
+    setInputCity('');
+  };
+
+  const cityInputOnChange = (text: string) => {
+    setInputCity(text);
   };
 
   const getWeatherOnPress = () => {};
@@ -50,6 +57,8 @@ export const WeatherScreen = () => {
       pressure={pressure}
       humidity={humidity}
       description={description}
+      inputCity={inputCity}
+      cityInputOnChange={cityInputOnChange}
       getMyPositionOnPress={getWeatherOnPress}
       modalVisible={modalVisible}
       changeCityOnPress={changeCityOnPress}

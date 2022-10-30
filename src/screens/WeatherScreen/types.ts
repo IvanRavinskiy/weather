@@ -1,4 +1,4 @@
-import {ModalProps, TouchableOpacityProps} from 'react-native';
+import {ModalProps, TextInputProps, TouchableOpacityProps} from 'react-native';
 
 export type WeatherViewProps = {
   city?: string;
@@ -7,6 +7,8 @@ export type WeatherViewProps = {
   pressure?: number;
   humidity?: number;
   description?: string;
+  inputCity?: TextInputProps['value'];
+  cityInputOnChange?: TextInputProps['onChangeText'];
   activeDegreeStyles?: TouchableOpacityProps['style'];
   selectCelsiusOnPress?: TouchableOpacityProps['onPress'];
   selectFahrenheitOnPress?: TouchableOpacityProps['onPress'];
