@@ -5,12 +5,14 @@ type WeatherState = {
   city: string;
   isLoading: boolean;
   data: null | any;
+  error: string;
 };
 
 const SLICE_INITIAL: WeatherState = {
   city: '',
   isLoading: false,
   data: null,
+  error: '',
 };
 
 const weatherSlice = createSlice({
@@ -25,8 +27,13 @@ const weatherSlice = createSlice({
       state.data = action.payload;
       state.isLoading = false;
     },
+    [WEATHER.WEATHER_DOWN](state) {
+      state.error = 'Try it again!';
+      state.isLoading = false;
+    },
   },
 });
 
 export const {actions, reducer: weatherReducer} = weatherSlice;
-export const {GET_WEATHER, WEATHER_SUCCESS} = weatherSlice.actions;
+export const {GET_WEATHER, WEATHER_SUCCESS, WEATHER_DOWN} =
+  weatherSlice.actions;
