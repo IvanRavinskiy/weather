@@ -23,11 +23,16 @@
     "test-with-coverage": "jest --coverage"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
+    "axios": "0.26.0",
     "react": "18.1.0",
     "react-native": "0.70.4",
+    "react-native-config": "^1.4.11",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-svg": "^13.4.0",
-    "react-native-svg-transformer": "^1.0.0"
+    "react-native-svg-transformer": "^1.0.0",
+    "react-redux": "^8.0.4",
+    "redux-saga": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -1,0 +1,8 @@
+export enum SLICES {
+  WEATHER = 'WEATHER',
+}
+
+export enum WEATHER {
+  GET_WEATHER = 'GET_WEATHER',
+  WEATHER_SUCCESS = 'WEATHER_SUCCESS',
+}

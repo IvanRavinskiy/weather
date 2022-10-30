@@ -7,4 +7,5 @@ export type WeatherViewProps = {
   modalVisible?: ModalProps['visible'];
   changeCityOnPress?: TouchableOpacityProps['onPress'];
   selectCityOnPress?: TouchableOpacityProps['onPress'];
+  getMyPositionOnPress?: TouchableOpacityProps['onPress'];
 };

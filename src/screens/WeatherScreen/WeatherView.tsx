@@ -22,6 +22,7 @@ export const WeatherView: FC<WeatherViewProps> = props => {
     modalVisible,
     changeCityOnPress,
     selectCityOnPress,
+    getMyPositionOnPress,
   } = props;
 
   return (
@@ -61,7 +62,9 @@ export const WeatherView: FC<WeatherViewProps> = props => {
           <TouchableOpacity onPress={changeCityOnPress}>
             <Text style={weatherScreenStyles.title}>Change city</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={weatherScreenStyles.positionContainer}>
+          <TouchableOpacity
+            onPress={getMyPositionOnPress}
+            style={weatherScreenStyles.positionContainer}>
             <Pointer style={weatherScreenStyles.positionIcon} />
             <Text style={weatherScreenStyles.title}>My position</Text>
           </TouchableOpacity>
