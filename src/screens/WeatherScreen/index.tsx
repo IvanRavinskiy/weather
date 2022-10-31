@@ -5,37 +5,29 @@ import {useAppDispatch, useAppSelector} from '../../state';
 import {GET_WEATHER} from '../../state/reducers/weather';
 import {getWeather} from '../../state/selectors/weather';
 import {getError} from '../../state/selectors/error';
+import {ActiveTemp} from './types';
 
 export const WeatherScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [inputCity, setInputCity] = useState('');
-  const [isError, setIsError] = useState(false);
 
-  const [isCelsius, setIsCelsius] = useState(true);
-  const [isFahrenheit, setIsFahrenheit] = useState(false);
+  const [activeTemp, setActiveTemp] = useState<ActiveTemp>('C');
 
   const dispatch = useAppDispatch();
 
   const weather = useAppSelector(getWeather);
   const city = weather?.name;
-  const temp = Math.round(weather?.main.temp);
+  const temp =
+    activeTemp === 'C'
+      ? Math.round(weather?.main.temp)
+      : Math.round(weather?.main.temp * 1.8) + 32;
   const wind = Math.round(weather?.wind.speed);
   const pressure = Math.round(weather?.main.pressure);
   const humidity = weather?.main.humidity;
   const description = weather?.weather[0].description;
 
   let errorMessage = useAppSelector(getError);
-  console.log('errorMessage', errorMessage);
-
-  const selectCelsius = () => {
-    setIsCelsius(true);
-    setIsFahrenheit(false);
-  };
-
-  const selectFahrenheit = () => {
-    setIsCelsius(false);
-    setIsFahrenheit(true);
-  };
+  console.log('QQQ errorMessage', errorMessage);
 
   const changeCityOnPress = () => {
     setModalVisible(true);
@@ -43,21 +35,15 @@ export const WeatherScreen = () => {
 
   const selectCityOnPress = () => {
     dispatch(GET_WEATHER(inputCity));
-    if (isError) {
-      setModalVisible(false);
-      setInputCity('');
-      setIsError(false);
-    } else {
-      setIsError(true);
-      setInputCity('');
-    }
+    setModalVisible(false);
+    setInputCity('');
   };
 
   const cityInputOnChange = (text: string) => {
     setInputCity(text);
   };
 
-  const getWeatherOnPress = () => {};
+  const getMyPositionOnPress = () => {};
 
   useEffect(() => {
     dispatch(GET_WEATHER(DEFAULT_CITY));
@@ -72,17 +58,12 @@ export const WeatherScreen = () => {
       humidity={humidity}
       description={description}
       inputCity={inputCity}
-      showError={isError}
-      error={errorMessage}
       cityInputOnChange={cityInputOnChange}
-      getMyPositionOnPress={getWeatherOnPress}
+      getMyPositionOnPress={getMyPositionOnPress}
       modalVisible={modalVisible}
       changeCityOnPress={changeCityOnPress}
       selectCityOnPress={selectCityOnPress}
-      isCelsiusToggle={isCelsius}
-      isFahrenheitToggle={isFahrenheit}
-      selectCelsiusOnPress={selectCelsius}
-      selectFahrenheitOnPress={selectFahrenheit}
+      setActiveTemp={setActiveTemp}
     />
   );
 };

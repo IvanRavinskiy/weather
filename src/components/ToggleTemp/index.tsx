@@ -1,27 +1,29 @@
-import React, {FC} from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-} from 'react-native';
+import React, {FC, useState} from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {toggleTempStyles} from './styles';
 import {COLORS} from '../../constants';
+import {ActiveTemp} from '../../screens/WeatherScreen/types';
 
 type ToggleTempProps = {
-  isCelsius: boolean;
-  isFahrenheit: boolean;
-  selectCelsiusOnPress: TouchableOpacityProps['onPress'];
-  selectFahrenheitOnPress: TouchableOpacityProps['onPress'];
+  setActiveTemp: (temp: ActiveTemp) => void;
 };
 
 export const ToggleTemp: FC<ToggleTempProps> = props => {
-  const {
-    isCelsius,
-    isFahrenheit,
-    selectCelsiusOnPress,
-    selectFahrenheitOnPress,
-  } = props;
+  const {setActiveTemp} = props;
+  const [isCelsius, setIsCelsius] = useState(true);
+  const [isFahrenheit, setIsFahrenheit] = useState(false);
+
+  const selectCelsius = () => {
+    setIsCelsius(true);
+    setIsFahrenheit(false);
+    setActiveTemp('C');
+  };
+
+  const selectFahrenheit = () => {
+    setIsCelsius(false);
+    setIsFahrenheit(true);
+    setActiveTemp('F');
+  };
 
   const activeStyles = {
     backgroundColor: COLORS.CERULEAN_FROST,
@@ -31,7 +33,7 @@ export const ToggleTemp: FC<ToggleTempProps> = props => {
   return (
     <View style={toggleTempStyles.switchDegreeContainer}>
       <TouchableOpacity
-        onPress={selectCelsiusOnPress}
+        onPress={selectCelsius}
         style={
           !isCelsius
             ? [toggleTempStyles.degreeContainer, activeStyles]
@@ -40,7 +42,7 @@ export const ToggleTemp: FC<ToggleTempProps> = props => {
         <Text style={toggleTempStyles.degree}>C</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={selectFahrenheitOnPress}
+        onPress={selectFahrenheit}
         style={
           !isFahrenheit
             ? [toggleTempStyles.degreeContainer, activeStyles]

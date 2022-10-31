@@ -21,6 +21,7 @@ const weatherSlice = createSlice({
   reducers: {
     [WEATHER.GET_WEATHER](state, action) {
       state.city = action.payload;
+      state.error = '';
       state.isLoading = true;
     },
     [WEATHER.WEATHER_SUCCESS](state, action) {

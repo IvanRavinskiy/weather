@@ -23,18 +23,13 @@ export const WeatherView: FC<WeatherViewProps> = props => {
     pressure = 0,
     humidity = 0,
     description = '',
-    showError = false,
-    error,
     inputCity,
     cityInputOnChange,
-    selectFahrenheitOnPress,
-    selectCelsiusOnPress,
     modalVisible,
     changeCityOnPress,
     selectCityOnPress,
     getMyPositionOnPress,
-    isFahrenheitToggle = false,
-    isCelsiusToggle = true,
+    setActiveTemp,
   } = props;
 
   return (
@@ -49,18 +44,12 @@ export const WeatherView: FC<WeatherViewProps> = props => {
             />
             <Button onPress={selectCityOnPress} title={'OK'} />
           </View>
-          {showError && <Text>{error}</Text>}
         </Modal>
         <View style={weatherScreenStyles.topHeaderContainer}>
           <Text style={weatherScreenStyles.city}>{city}</Text>
           <View style={weatherScreenStyles.mainDegreeContainer}>
             <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
-            <ToggleTemp
-              isCelsius={isCelsiusToggle}
-              isFahrenheit={isFahrenheitToggle}
-              selectCelsiusOnPress={selectCelsiusOnPress}
-              selectFahrenheitOnPress={selectFahrenheitOnPress}
-            />
+            <ToggleTemp setActiveTemp={setActiveTemp} />
           </View>
         </View>
         <View style={weatherScreenStyles.bottomHeaderContainer}>
