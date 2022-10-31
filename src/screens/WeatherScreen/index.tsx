@@ -6,6 +6,7 @@ import {GET_WEATHER} from '../../state/reducers/weather';
 import {getWeather} from '../../state/selectors/weather';
 import {getError} from '../../state/selectors/error';
 import {ActiveTemp} from './types';
+import {toF} from '../../utils/toF';
 
 export const WeatherScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -19,7 +20,7 @@ export const WeatherScreen = () => {
   const temp =
     activeTemp === 'C'
       ? Math.round(weather?.main.temp)
-      : Math.round(weather?.main.temp * 1.8) + 32;
+      : toF(weather?.main.temp);
   const wind = Math.round(weather?.wind.speed);
   const pressure = Math.round(weather?.main.pressure);
   const humidity = weather?.main.humidity;
