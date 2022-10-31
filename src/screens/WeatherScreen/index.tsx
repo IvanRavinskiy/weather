@@ -9,7 +9,6 @@ import {ActiveTemp} from './types';
 
 export const WeatherScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [inputCity, setInputCity] = useState('');
 
   const [activeTemp, setActiveTemp] = useState<ActiveTemp>('C');
 
@@ -33,16 +32,6 @@ export const WeatherScreen = () => {
     setModalVisible(true);
   };
 
-  const selectCityOnPress = () => {
-    dispatch(GET_WEATHER(inputCity));
-    setModalVisible(false);
-    setInputCity('');
-  };
-
-  const cityInputOnChange = (text: string) => {
-    setInputCity(text);
-  };
-
   const getMyPositionOnPress = () => {};
 
   useEffect(() => {
@@ -57,13 +46,11 @@ export const WeatherScreen = () => {
       pressure={pressure}
       humidity={humidity}
       description={description}
-      inputCity={inputCity}
-      cityInputOnChange={cityInputOnChange}
       getMyPositionOnPress={getMyPositionOnPress}
-      modalVisible={modalVisible}
       changeCityOnPress={changeCityOnPress}
-      selectCityOnPress={selectCityOnPress}
       setActiveTemp={setActiveTemp}
+      modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
     />
   );
 };
