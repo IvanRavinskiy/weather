@@ -4,8 +4,3 @@ export enum COLORS {
   WHITE = '#FFFFFF',
   WHITE_WITH_OPACITY = 'rgba(255, 255, 255, 0.2)',
 }
-
-export const activeStyles = {
-  backgroundColor: COLORS.CERULEAN_FROST,
-  opacity: 0.2,
-};

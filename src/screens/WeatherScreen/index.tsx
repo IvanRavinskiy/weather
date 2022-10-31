@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {WeatherView} from './WeatherView';
-import {activeStyles, DEFAULT_CITY} from '../../constants';
+import {DEFAULT_CITY} from '../../constants';
 import {useAppDispatch, useAppSelector} from '../../state';
 import {GET_WEATHER} from '../../state/reducers/weather';
 import {getWeather} from '../../state/selectors/weather';
+import {getError} from '../../state/selectors/error';
 
 export const WeatherScreen = () => {
-  const [isActiveDegree, setIsActiveDegree] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [inputCity, setInputCity] = useState('');
+  const [isError, setIsError] = useState(false);
+
+  const [isCelsius, setIsCelsius] = useState(true);
+  const [isFahrenheit, setIsFahrenheit] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -20,23 +24,33 @@ export const WeatherScreen = () => {
   const humidity = weather?.main.humidity;
   const description = weather?.weather[0].description;
 
-  const activeDegreeStyles = isActiveDegree && activeStyles;
+  let errorMessage = useAppSelector(getError);
+  console.log('errorMessage', errorMessage);
 
   const selectCelsius = () => {
-    setIsActiveDegree(!isActiveDegree);
+    setIsCelsius(true);
+    setIsFahrenheit(false);
   };
 
   const selectFahrenheit = () => {
-    setIsActiveDegree(!isActiveDegree);
+    setIsCelsius(false);
+    setIsFahrenheit(true);
   };
 
   const changeCityOnPress = () => {
     setModalVisible(true);
   };
+
   const selectCityOnPress = () => {
-    setModalVisible(false);
     dispatch(GET_WEATHER(inputCity));
-    setInputCity('');
+    if (isError) {
+      setModalVisible(false);
+      setInputCity('');
+      setIsError(false);
+    } else {
+      setIsError(true);
+      setInputCity('');
+    }
   };
 
   const cityInputOnChange = (text: string) => {
@@ -58,14 +72,17 @@ export const WeatherScreen = () => {
       humidity={humidity}
       description={description}
       inputCity={inputCity}
+      showError={isError}
+      error={errorMessage}
       cityInputOnChange={cityInputOnChange}
       getMyPositionOnPress={getWeatherOnPress}
       modalVisible={modalVisible}
       changeCityOnPress={changeCityOnPress}
       selectCityOnPress={selectCityOnPress}
+      isCelsiusToggle={isCelsius}
+      isFahrenheitToggle={isFahrenheit}
       selectCelsiusOnPress={selectCelsius}
       selectFahrenheitOnPress={selectFahrenheit}
-      activeDegreeStyles={activeDegreeStyles}
     />
   );
 };

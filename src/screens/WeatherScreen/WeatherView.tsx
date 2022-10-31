@@ -13,6 +13,7 @@ import {WeatherPropertyCard} from '../../components/WeatherPropertyCard';
 import Pointer from '../../../assets/pointer.svg';
 import Cloud from '../../../assets/cloud.svg';
 import {WeatherViewProps} from './types';
+import {ToggleTemp} from '../../components/ToggleTemp';
 
 export const WeatherView: FC<WeatherViewProps> = props => {
   const {
@@ -22,15 +23,18 @@ export const WeatherView: FC<WeatherViewProps> = props => {
     pressure = 0,
     humidity = 0,
     description = '',
+    showError = false,
+    error,
     inputCity,
     cityInputOnChange,
-    activeDegreeStyles,
     selectFahrenheitOnPress,
     selectCelsiusOnPress,
     modalVisible,
     changeCityOnPress,
     selectCityOnPress,
     getMyPositionOnPress,
+    isFahrenheitToggle = false,
+    isCelsiusToggle = true,
   } = props;
 
   return (
@@ -45,29 +49,18 @@ export const WeatherView: FC<WeatherViewProps> = props => {
             />
             <Button onPress={selectCityOnPress} title={'OK'} />
           </View>
+          {showError && <Text>{error}</Text>}
         </Modal>
         <View style={weatherScreenStyles.topHeaderContainer}>
           <Text style={weatherScreenStyles.city}>{city}</Text>
           <View style={weatherScreenStyles.mainDegreeContainer}>
             <Text style={weatherScreenStyles.degreeSymbol}>º</Text>
-            <View style={weatherScreenStyles.switchDegreeContainer}>
-              <TouchableOpacity
-                onPress={selectCelsiusOnPress}
-                style={[
-                  weatherScreenStyles.degreeContainer,
-                  activeDegreeStyles,
-                ]}>
-                <Text style={weatherScreenStyles.degree}>C</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={selectFahrenheitOnPress}
-                style={[
-                  weatherScreenStyles.degreeContainer,
-                  activeDegreeStyles,
-                ]}>
-                <Text style={weatherScreenStyles.degree}>F</Text>
-              </TouchableOpacity>
-            </View>
+            <ToggleTemp
+              isCelsius={isCelsiusToggle}
+              isFahrenheit={isFahrenheitToggle}
+              selectCelsiusOnPress={selectCelsiusOnPress}
+              selectFahrenheitOnPress={selectFahrenheitOnPress}
+            />
           </View>
         </View>
         <View style={weatherScreenStyles.bottomHeaderContainer}>
