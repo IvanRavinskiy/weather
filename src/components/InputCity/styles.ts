@@ -11,7 +11,7 @@ export const inputCityStyles = StyleSheet.create<InputCityStyles>({
     marginHorizontal: '5%',
     backgroundColor: COLORS.WHITE,
     borderRadius: 4,
-    padding: '3%',
+    paddingHorizontal: '3%',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

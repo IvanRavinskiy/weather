@@ -4,7 +4,7 @@ import {
   useWindowDimensions,
   ViewStyle,
 } from 'react-native';
-import {COLORS} from '../../constants';
+import {COLORS, FONT_FAMILIES} from '../../constants';
 
 type WeatherPropertyCardStyles = {
   propertyCard: ViewStyle;
@@ -25,14 +25,14 @@ export const useWeatherPropertyCardStyles = () => {
     },
     property: {
       color: COLORS.WHITE,
-      // fontFamily: 'Lato', //add fond
+      fontFamily: FONT_FAMILIES.LATO_REGULAR,
       fontSize: 15,
       fontWeight: '400',
       lineHeight: 18,
     },
     index: {
       color: COLORS.WHITE,
-      // fontFamily: 'Lato', //add fond
+      fontFamily: FONT_FAMILIES.LATO_REGULAR,
       fontSize: 18,
       fontWeight: '700',
       lineHeight: 21.6,

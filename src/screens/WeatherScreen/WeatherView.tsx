@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {weatherScreenStyles} from './styles';
 import {WeatherPropertyCard} from '../../components/WeatherPropertyCard';
 import Pointer from '../../../assets/pointer.svg';
@@ -8,6 +7,7 @@ import Cloud from '../../../assets/cloud.svg';
 import {WeatherViewProps} from './types';
 import {ToggleTemp} from '../../components/ToggleTemp';
 import {InputCity} from '../../components/InputCity';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export const WeatherView: FC<WeatherViewProps> = props => {
   const {
@@ -26,7 +26,7 @@ export const WeatherView: FC<WeatherViewProps> = props => {
 
   return (
     <SafeAreaView style={weatherScreenStyles.rootContainer}>
-      <View>
+      <View style={weatherScreenStyles.headerContainer}>
         <InputCity
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
@@ -57,15 +57,15 @@ export const WeatherView: FC<WeatherViewProps> = props => {
         </View>
         <Text style={weatherScreenStyles.currentWeather}>{description}</Text>
       </View>
-      <View>
-        <View style={weatherScreenStyles.bottomContainerRow}>
+      <View style={weatherScreenStyles.footerContainerRow}>
+        <View style={weatherScreenStyles.cardsRowContainerRow}>
           <WeatherPropertyCard property={'Wind'} index={`${wind} m/s, west`} />
           <WeatherPropertyCard
             property={'Pressure'}
             index={`${pressure} hPa`}
           />
         </View>
-        <View style={weatherScreenStyles.bottomContainerRow}>
+        <View style={weatherScreenStyles.cardsRowContainerRow}>
           <WeatherPropertyCard property={'Humidity'} index={`${humidity}%`} />
           <WeatherPropertyCard property={'Chance of rain'} index={'10%'} />
         </View>
